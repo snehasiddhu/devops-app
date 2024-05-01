@@ -11,5 +11,10 @@ pipeline{
                 nexusArtifactUploader artifacts: [[artifactId: 'devops-app', classifier: '', file: 'target/devops-app.war', type: 'war']], credentialsId: 'nexus6pm', groupId: 'in.javahome', nexusUrl: '54.87.20.107:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'devops-app', version: '1.0'
             }
         }
+        stage("Dev Deploy"){
+            steps{
+                sh "ansible-playbook -i dev devops-app-deploy.yml"
+            }
+        }
     }
 }
