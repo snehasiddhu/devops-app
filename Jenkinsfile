@@ -13,7 +13,7 @@ pipeline{
         }
         stage("Dev Deploy"){
             steps{
-                sh "ansible-playbook -i dev devops-app-deploy.yml"
+                sh "/Library/Frameworks/Python.framework/Versions/3.10/bin/ansible-playbook -i dev devops-app-deploy.yml"
             }
         }
     }
