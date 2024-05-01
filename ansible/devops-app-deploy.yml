@@ -3,5 +3,5 @@
   tasks:
     - name: Deploy war file to tomcat
       copy:
-        src: target/devops-app.war
+        src: /Users/kammana/.jenkins/workspace/devops-mini-project-april124/target/devops-app.war
         dest: /opt/tomcat9/webapps/
