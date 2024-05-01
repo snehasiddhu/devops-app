@@ -1,0 +1,7 @@
+- hosts: tomcat
+  become: True
+  tasks:
+    - name: Deploy war file to tomcat
+      copy:
+        src: target/devops-app.war
+        dest: /opt/tomcat9/webapps/
