@@ -1,5 +1,9 @@
 - hosts: tomcat
   become: True
+  serial:
+    - 1
+    - 3
+    - 20%
   tasks:
     - name: Download from nexus3
       maven_artifact:
