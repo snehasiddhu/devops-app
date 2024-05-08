@@ -1,3 +1,5 @@
+@Library("7am-libs") _
+
 pipeline{
     agent any
     stages{
@@ -13,13 +15,13 @@ pipeline{
         }
         stage("Tomcat Deploy"){
             steps {
-                // Copy war file to remote
-                // Stop tomcat on remote
-                // Start tomcat on remote
-                sshagent(['tomcatdev-7am']) {
-                    sh "scp -o StrictHostKeyChecking=no target/devops-app.war ec2-user@54.82.16.197:/opt/tomcat9/webapps"
-                    sh "ssh ec2-user@54.82.16.197 /opt/tomcat9/bin/shutdown.sh"
-                    sh "ssh ec2-user@54.82.16.197 /opt/tomcat9/bin/startup.sh"
+                tomcatDeploy("54.82.16.197")
+                }
+            }
+        }
+        stage("Tomcat Test Deploy"){
+            steps {
+                tomcatDeploy("54.82.16.200")
                 }
             }
         }
